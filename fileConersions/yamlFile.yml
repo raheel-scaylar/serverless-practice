@@ -1,0 +1,9 @@
+students: #root parent
+  top student: #child
+    name: john #child object's first entity
+    age: 21
+    degree: computer science
+    hobbies: #array parent
+      - drawing #array child
+      - gaming
+      - collecting

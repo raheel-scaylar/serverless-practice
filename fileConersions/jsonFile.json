@@ -1,0 +1,10 @@
+{
+  "students": {
+    "top student": {
+      "name": "john",
+      "age": 21,
+      "degree": "computer science",
+      "hobbies": ["drawing", "gaming", "collecting stones"]
+    }
+  }
+}
