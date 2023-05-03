@@ -13,8 +13,6 @@ provider:
   region: us-east-1 # determines the reigion where you want to deploy your application
   stage: dev #determines it's a development stage (can be developement, deployment, production or staging)
   # timeout: 100
-  environment:
-    DYNAMODB_TABLE: MyTable
 
 plugins:
   - serverless-offline
@@ -35,34 +33,6 @@ functions:
           method: PUT
       - http:
           path: /api/v1/{id}
-          method: DELETE
-
-  GetHandler:
-    handler: ./src/handlers/crud-handlers/query-handlers/GetHandler.getItems
-    events:
-      - http:
-          path: /api/v1/items
-          method: GET
-
-  PostHandler:
-    handler: ./src/handlers/crud-handlers/query-handlers/PostHandler.postItem
-    events:
-      - http:
-          path: /api/v1/items
-          method: POST
-
-  PutHandler:
-    handler: ./src/handlers/crud-handlers/query-handlers/UpdateHandler.putItem
-    events:
-      - http:
-          path: /api/v1/items/{id}
-          method: PUT
-
-  DeleteHandler:
-    handler: ./src/handlers/crud-handlers/query-handlers/DeleteHandler.deleteItem
-    events:
-      - http:
-          path: /api/v1/items/{id}
           method: DELETE
 
 custom:
