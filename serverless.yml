@@ -12,7 +12,7 @@ provider:
   runtime: nodejs12.x # determines which platform or language you are using for development
   region: us-east-1 # determines the reigion where you want to deploy your application
   stage: dev #determines it's a development stage (can be developement, deployment, production or staging)
-  # timeout: 100
+  timeout: 100
   environment:
     DYNAMODB_TABLE: MyTable
 
@@ -37,32 +37,60 @@ functions:
           path: /api/v1/{id}
           method: DELETE
 
-  GetHandler:
+  GetItems:
     handler: ./src/handlers/crud-handlers/query-handlers/GetHandler.getItems
     events:
       - http:
           path: /api/v1/items
           method: GET
 
-  PostHandler:
+  PostItem:
     handler: ./src/handlers/crud-handlers/query-handlers/PostHandler.postItem
     events:
       - http:
           path: /api/v1/items
           method: POST
 
-  PutHandler:
+  UpdateItem:
     handler: ./src/handlers/crud-handlers/query-handlers/UpdateHandler.putItem
     events:
       - http:
           path: /api/v1/items/{id}
           method: PUT
 
-  DeleteHandler:
+  DeleteItem:
     handler: ./src/handlers/crud-handlers/query-handlers/DeleteHandler.deleteItem
     events:
       - http:
           path: /api/v1/items/{id}
+          method: DELETE
+
+  ReadUsers:
+    handler: ./src/modules/users/endpoints/Read.read
+    events:
+      - http:
+          path: /api/v1/users
+          method: GET
+
+  AddUser:
+    handler: ./src/modules/users/endpoints/Create.create
+    events:
+      - http:
+          path: /api/v1/users
+          method: POST
+
+  UpdateUser:
+    handler: ./src/modules/users/endpoints/Update.update
+    events:
+      - http:
+          path: /api/v1/users/{id}
+          method: PUT
+
+  DeleteUser:
+    handler: ./src/modules/users/endpoints/Delete.remove
+    events:
+      - http:
+          path: /api/v1/users/{id}
           method: DELETE
 
 custom:
